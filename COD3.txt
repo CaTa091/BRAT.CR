@@ -1,0 +1,42 @@
+#include <iostream>
+
+struct Pozitie {
+    double x;
+    double y;
+};
+
+enum TipMiscare {
+    Orizontala,
+    Verticala
+};
+
+void executaMiscare(TipMiscare tip, Pozitie& pozitie, double distanta) {
+    switch (tip) {
+        case Orizontala:
+            pozitie.x += distanta;
+            std::cout << "Deplasare orizontala cu " << distanta << " unitati.\n";
+            break;
+        case Verticala:
+            pozitie.y += distanta;
+            std::cout << "Deplasare verticala cu " << distanta << " unitati.\n";
+            break;
+    }
+}
+
+void controleazaPrehensor(bool deschis) {
+    std::cout << "Prehensor " << (deschis ? "deschis" : "inchis") << ".\n";
+}
+
+int main() {
+    Pozitie pozitie = {0.0, 0.0};
+
+    executaMiscare(Orizontala, pozitie, 5.0);
+    executaMiscare(Verticala, pozitie, 3.0);
+    controleazaPrehensor(true);
+
+    std::cout << "Starea bratului robotic:\n";
+    std::cout << "Pozitie X: " << pozitie.x << "\n";
+    std::cout << "Pozitie Y: " << pozitie.y << "\n";
+
+    return 0;
+}
